@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "italk.APIs", "italk.APIs.csproj", "{D850831D-3DBF-45E6-866E-5C86DF495373}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "italk.BL", "..\italk.BL\italk.BL.csproj", "{2C04D6EE-38D5-41B1-B53A-A06C002F6354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "italk.DAL", "..\italk.DAL\italk.DAL.csproj", "{BB162628-FDE9-4BCC-818C-F65E34A6A814}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D850831D-3DBF-45E6-866E-5C86DF495373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D850831D-3DBF-45E6-866E-5C86DF495373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D850831D-3DBF-45E6-866E-5C86DF495373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D850831D-3DBF-45E6-866E-5C86DF495373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C04D6EE-38D5-41B1-B53A-A06C002F6354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C04D6EE-38D5-41B1-B53A-A06C002F6354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C04D6EE-38D5-41B1-B53A-A06C002F6354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C04D6EE-38D5-41B1-B53A-A06C002F6354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB162628-FDE9-4BCC-818C-F65E34A6A814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB162628-FDE9-4BCC-818C-F65E34A6A814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB162628-FDE9-4BCC-818C-F65E34A6A814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB162628-FDE9-4BCC-818C-F65E34A6A814}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E55D29F2-33CE-46C7-B471-A603A01F065C}
+	EndGlobalSection
+EndGlobal
