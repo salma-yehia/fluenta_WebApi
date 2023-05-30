@@ -12,7 +12,7 @@ using italk.DAL.Data.Context;
 namespace italk.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230528192639_init")]
+    [Migration("20230529131837_init")]
     partial class init
     {
         /// <inheritdoc />

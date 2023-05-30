@@ -10,7 +10,7 @@ public class InstructorRegisterDto
 {
     public string UserName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string PasswordHash { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
     public int Degree { get; set; }
     public DateTime Appointment { get; set; }
     public string Nationality { get; set; } = string.Empty;
@@ -19,12 +19,12 @@ public class InstructorRegisterDto
     public string Experience { get; set; } = string.Empty;
     public string TeachingCertificate { get; set; } = string.Empty;
     public string ExtraCourses { get; set; } = string.Empty;
-    public enum GanderType
+    public enum GenderType
     {
         Empty,
         Male,
         Female
     }
-    public GanderType Gander { get; set; } = GanderType.Empty;
+    public GenderType Gender { get; set; } = GenderType.Empty;
     public int LanguageId { get; set; }
 }

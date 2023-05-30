@@ -17,7 +17,7 @@ namespace italk.BL.Dtos.UserDto
             Male,
             Female
         }
-        public GenderType Gander { get; set; } = GenderType.Empty;
+        public GenderType Gender { get; set; } = GenderType.Empty;
     }
 }
 

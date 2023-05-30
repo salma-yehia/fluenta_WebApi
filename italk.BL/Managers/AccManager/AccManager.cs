@@ -35,14 +35,14 @@ namespace italk.BL.Managers.AccManager
 
         public async Task<TokenDto> Login(LoginDto loginDto)
         {
-            BaseModel? baseModel = await _userManager.FindByNameAsync(loginDto.UserName);
+            BaseModel? baseModel = await _userManager.FindByEmailAsync(loginDto.Email);
             if (baseModel == null)
             {
 
                 return new TokenDto(TokenResult.wrong_user_name);
             }
 
-            bool isPasswordCorrect = await _userManager.CheckPasswordAsync(baseModel, loginDto.PasswordHash);
+            bool isPasswordCorrect = await _userManager.CheckPasswordAsync(baseModel, loginDto.Password);
             if (!isPasswordCorrect)
             {
 
@@ -59,7 +59,7 @@ namespace italk.BL.Managers.AccManager
             var newStudent = _mapper.Map<Student>(studentRegisterDto);
 
             var creationResult = await _userManager.CreateAsync(newStudent,
-                studentRegisterDto.PasswordHash);
+                studentRegisterDto.Password);
             if (!creationResult.Succeeded)
             {
                 return new RegisterResultDto(false, creationResult.Errors);
@@ -81,7 +81,7 @@ namespace italk.BL.Managers.AccManager
             var newInstructor = _mapper.Map<Instructor>(instructorRegisterDto);
 
             var creationResult = await _userManager.CreateAsync(newInstructor,
-                instructorRegisterDto.PasswordHash);
+                instructorRegisterDto.Password);
             if (!creationResult.Succeeded)
             {
                 return new RegisterResultDto(false, creationResult.Errors);
