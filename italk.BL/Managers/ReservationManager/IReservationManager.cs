@@ -8,5 +8,7 @@ namespace italk.BL.Managers.ReservationManager
         bool CheckAppointment(ReservationDto reservationDto);
         List<ReservationDto> GetReservationsForInstructor(int id);
         List<ReservationDto> GetReservationsForStudent(int id);
+        int Add(AddReservationDto addReservationDto);
+
     }
 }

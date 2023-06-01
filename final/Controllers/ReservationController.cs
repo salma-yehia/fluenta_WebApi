@@ -16,5 +16,10 @@ namespace italk.APIs.Controllers
         {
             _reservationManager = reservationManager;
         }
+        [HttpPost("AddReservation")]
+        public int AddReservation(AddReservationDto addReservationDto)
+        {
+            return _reservationManager.Add(addReservationDto);
+        }
     }
 }
