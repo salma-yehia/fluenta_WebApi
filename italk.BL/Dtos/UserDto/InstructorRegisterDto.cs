@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ public class InstructorRegisterDto
     public DateTime Appointment { get; set; }
     public string Nationality { get; set; } = string.Empty;
     public string Descroption { get; set; } = string.Empty;
-    public string Imgname { get; set; } = string.Empty;
+    public IFormFile? ImageFile { get; set; } 
     public string Experience { get; set; } = string.Empty;
     public string TeachingCertificate { get; set; } = string.Empty;
     public string ExtraCourses { get; set; } = string.Empty;
