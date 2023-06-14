@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using italk.BL.Dots;
-using italk.BL.Helper;
 using italk.DAL.Data.Models;
 using italk.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
@@ -80,7 +79,6 @@ namespace italk.BL.Managers.AccManager
         public async Task<RegisterResultDto> InstructorRegister(InstructorRegisterDto instructorRegisterDto)
         {
             var newInstructor = _mapper.Map<Instructor>(instructorRegisterDto);
-            newInstructor.Imgname = await ImgHelper.UploadImg(instructorRegisterDto.ImageFile);
             var creationResult = await _userManager.CreateAsync(newInstructor,
                 instructorRegisterDto.Password);
             if (!creationResult.Succeeded)

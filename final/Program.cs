@@ -11,6 +11,7 @@ using italk.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
@@ -126,6 +127,12 @@ namespace final
                 app.UseSwaggerUI();
             }
             app.UseCors("AllowAll");
+            var staticFilesPath = Path.Combine(Environment.CurrentDirectory, "../italk.BL/Files");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(staticFilesPath),
+                RequestPath = "/italk.BL/Files"
+            });
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
