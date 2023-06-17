@@ -11,7 +11,7 @@ namespace italk.BL.Dtos.UserDto
     {
         public string UserName { get; set; } = string.Empty;
         public int LanguageId { get; set; }
-        public string Imgname { get; set; } = string.Empty;
+        public string ImgName { get; set; } = string.Empty;
         public enum GenderType
         {
             Empty,
