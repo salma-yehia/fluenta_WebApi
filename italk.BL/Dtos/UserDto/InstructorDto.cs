@@ -9,6 +9,7 @@ namespace italk.BL.Dtos.UserDto
 {
     public class InstructorDto
     {
+        public int Id { get; set; }
         public string UserName { get; set; } = string.Empty;
         public int LanguageId { get; set; }
         public string ImgName { get; set; } = string.Empty;
