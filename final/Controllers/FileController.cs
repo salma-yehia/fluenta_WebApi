@@ -49,7 +49,7 @@ namespace italk.APIs.Controllers
 
             #endregion
 
-            #region Storing The Image
+            #region Storing The File
 
             var newFileName = $"{Guid.NewGuid()}{extension}";
             var filesPath = Path.Combine(Environment.CurrentDirectory, $"../italk.BL/Files/{subFolder}");
@@ -62,7 +62,7 @@ namespace italk.APIs.Controllers
 
             #region Generating URL
 
-            var url = $"{Request.Scheme}://{Request.Host}/Files/{newFileName}";
+            var url = $"{Request.Scheme}://{Request.Host}/Files/{subFolder}/{newFileName}";
             return new UploadFileDto(true, "Success", url);
 
             #endregion
