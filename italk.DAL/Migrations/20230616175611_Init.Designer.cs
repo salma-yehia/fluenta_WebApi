@@ -12,8 +12,8 @@ using italk.DAL.Data.Context;
 namespace italk.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230529131837_init")]
-    partial class init
+    [Migration("20230616175611_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
