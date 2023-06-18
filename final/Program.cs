@@ -127,11 +127,11 @@ namespace final
                 app.UseSwaggerUI();
             }
             app.UseCors("AllowAll");
-            var staticFilesPath = Path.Combine(Environment.CurrentDirectory, "../italk.BL/Files");
+            var staticFilesPath = Path.Combine(Environment.CurrentDirectory, "Files");
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(staticFilesPath),
-                RequestPath = "/italk.BL/Files"
+                RequestPath = "/Files"
             });
             app.UseHttpsRedirection();
             app.UseAuthentication();

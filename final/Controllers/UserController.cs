@@ -44,6 +44,31 @@ namespace italk.APIs.Controllers
             return NoContent();
 
         }
+        [HttpPut("UpdateStudent/{id}")]
+        public async Task<IActionResult> UpdateStudent(int id, StudentRegisterDto studentDto)
+        {
+            var updatedStudent = await _accManager.UpdateStudent(id, studentDto);
 
+            if (updatedStudent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedStudent);
+        }
+
+        [HttpPut("UpdateInstructor/{id}")]
+        public async Task<IActionResult> UpdateInstructor(int id, InstructorRegisterDto instructorDto)
+        {
+            var updatedInstructor = await _accManager.UpdateInstructor(id, instructorDto);
+
+            if (updatedInstructor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedInstructor);
+        }
     }
 }
+
