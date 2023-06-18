@@ -97,6 +97,52 @@ namespace italk.BL.Managers.AccManager
             return new RegisterResultDto(true);
         }
 
+        public async Task<StudentRegisterDto> UpdateStudent(int id, StudentRegisterDto studentDto)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                return null!; 
+            }
+
+            _mapper.Map(studentDto, user);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return studentDto;
+            }
+            else
+            {
+                return null!;
+            }
+        }
+
+        public async Task<InstructorRegisterDto> UpdateInstructor(int id, InstructorRegisterDto instructorDto)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                return null!;
+            }
+
+            _mapper.Map(instructorDto, user);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return instructorDto;
+            }
+            else
+            {
+                return null!;
+            }
+        }
+
         #region token
         private TokenDto GenerateToken(IList<Claim> claimsList)
         {
