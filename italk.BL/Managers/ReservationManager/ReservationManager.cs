@@ -39,9 +39,9 @@ namespace italk.BL.Managers.ReservationManager
             return _mapper.Map<List<ReservationDto>>(reservations);
         }
 
-        public bool CheckAppointment(ReservationDto reservationDto)
+        public bool CheckAppointment(AddReservationDto addReservationDto)
         {
-            return _unitOfWork.ReservationRepo.CheckAppointment(reservationDto.Appointment , reservationDto.StudentId);
+            return _unitOfWork.ReservationRepo.CheckAppointment(addReservationDto.Appointment , addReservationDto.StudentId);
         }
         public int Add(AddReservationDto addReservationDto)
         {
