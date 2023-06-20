@@ -9,6 +9,8 @@ namespace italk.BL.Managers.AccManager
         Task<RegisterResultDto> StudentRegister(StudentRegisterDto studentRegisterDto);
         Task<StudentRegisterDto> UpdateStudent(int id, StudentRegisterDto studentDto);
         Task<InstructorRegisterDto> UpdateInstructor(int id, InstructorRegisterDto instructorDto);
+        Task<StudentRegisterDto> GetStudentById(int id);
+        Task<InstructorRegisterDto> GetInstructorById(int id);
 
     }
 }

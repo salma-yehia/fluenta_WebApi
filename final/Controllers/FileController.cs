@@ -52,7 +52,7 @@ namespace italk.APIs.Controllers
             #region Storing The File
 
             var newFileName = $"{Guid.NewGuid()}{extension}";
-            var filesPath = Path.Combine(Environment.CurrentDirectory, $"../italk.BL/Files/{subFolder}");
+            var filesPath = Path.Combine(Environment.CurrentDirectory, $"Files/{subFolder}");
             var fullFilePath = Path.Combine(filesPath, newFileName);
 
             using var stream = new FileStream(fullFilePath, FileMode.Create);

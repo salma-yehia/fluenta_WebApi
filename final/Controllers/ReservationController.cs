@@ -21,5 +21,12 @@ namespace italk.APIs.Controllers
         {
             return _reservationManager.Add(addReservationDto);
         }
+
+        [HttpPost("CheckAppointment")]
+        public bool CheckAppointment(AddReservationDto addReservationDto)
+        {
+            return _reservationManager.CheckAppointment(addReservationDto);
+
+        }
     }
 }

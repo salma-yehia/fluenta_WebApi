@@ -14,6 +14,8 @@ namespace italk.BL.Profiles
         public StudentProfile()
         {
             CreateMap<StudentRegisterDto, Student>();
+            CreateMap<Student, StudentRegisterDto>();
+
         }
     }
 }
