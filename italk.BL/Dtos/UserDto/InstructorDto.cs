@@ -13,6 +13,7 @@ namespace italk.BL.Dtos.UserDto
         public string UserName { get; set; } = string.Empty;
         public int LanguageId { get; set; }
         public string ImgName { get; set; } = string.Empty;
+        public DateTime Appointment { get; set; }
         public enum GenderType
         {
             Empty,

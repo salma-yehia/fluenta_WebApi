@@ -143,6 +143,18 @@ namespace italk.BL.Managers.AccManager
             }
         }
 
+        public async Task<InstructorRegisterDto> GetInstructorById(int id)
+        {
+            var instructor = await _userManager.FindByIdAsync(id.ToString());
+            return _mapper.Map<InstructorRegisterDto>(instructor);
+        }
+
+        public async Task<StudentRegisterDto> GetStudentById(int id)
+        {
+            var student = await _userManager.FindByIdAsync(id.ToString());
+            return _mapper.Map<StudentRegisterDto>(student);
+        }
+
         #region token
         private TokenDto GenerateToken(IList<Claim> claimsList)
         {
