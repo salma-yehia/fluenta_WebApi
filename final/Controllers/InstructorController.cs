@@ -6,6 +6,7 @@ using italk.BL.Managers.LanguageManager;
 using italk.BL.Managers.ReservationManager;
 using italk.DAL.Data.Models;
 using italk.DAL.Repos.Instructors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,8 @@ namespace italk.APIs.Controllers
            return _reservationManager.GetReservationsForInstructor(id);
         }
         [HttpGet("GetInstructorById/{id}")]
+        //[Authorize(Policy = "instructor")]
+
         public async Task<ActionResult<InstructorRegisterDto>> GetInstructorById(int id)
         {
             var instructor=await _accManager.GetInstructorById(id);

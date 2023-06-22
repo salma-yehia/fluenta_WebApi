@@ -2,6 +2,7 @@
 using italk.BL.Dtos.ReservationDto;
 using italk.BL.Managers.AccManager;
 using italk.BL.Managers.ReservationManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace italk.APIs.Controllers
@@ -25,6 +26,8 @@ namespace italk.APIs.Controllers
             return _reservationManager.GetReservationsForStudent(id);
         }
         [HttpGet("GetStudentById/{id}")]
+        //[Authorize(Policy = "student")]
+
         public async Task<ActionResult<StudentRegisterDto>> GetStudentById(int id)
         {
             var student = await _accManager.GetStudentById(id);
