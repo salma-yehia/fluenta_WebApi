@@ -12,6 +12,7 @@ namespace italk.DAL.Data.Models
         public int Age { get; set; }
         public string Level { get; set; } = string.Empty;
         public ICollection<Reservation> Resrvations { get; set; } = new List<Reservation>();
+        public ICollection<Questions> Questions { get; set; } = new List<Questions>();
         public ICollection<CourseReservation> CrsReservations { get; set; } = new List<CourseReservation>();
 
     }

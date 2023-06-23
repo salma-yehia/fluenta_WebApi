@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using italk.BL.Dots;
+using italk.BL.Dtos.LevelDto;
+using italk.BL.Dtos.UserDto;
 using italk.DAL.Data.Models;
 using italk.DAL.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
@@ -142,6 +144,29 @@ namespace italk.BL.Managers.AccManager
                 return null!;
             }
         }
+
+        public async Task<LevelDto> UpdateStudentLevel(int id, LevelDto levelDto)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                return null!;
+            }
+
+            _mapper.Map(levelDto, user);
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return levelDto;
+            }
+            else
+            {
+                return null!;
+            }
+        }
+
 
         public async Task<InstructorRegisterDto> GetInstructorById(int id)
         {

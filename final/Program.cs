@@ -5,6 +5,7 @@ using italk.BL.Managers.ReservationManager;
 using italk.BL.Profiles;
 using italk.DAL.Data.Context;
 using italk.DAL.Data.Models;
+using italk.DAL.Repos.Question;
 using italk.DAL.Repos.Instructors;
 using italk.DAL.Repos.Languages;
 using italk.DAL.Repos.Reservations;
@@ -18,6 +19,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Text;
+using italk.BL.Managers.QuestionsManager;
+using italk.DAL;
 
 namespace final
 {
@@ -57,9 +60,13 @@ namespace final
                 .LogTo(Log => Debug.WriteLine(Log) , LogLevel.Information).EnableSensitiveDataLogging());
 
             builder.Services.AddScoped<IInstructorRepo, InstructorRepo>();
+            builder.Services.AddScoped<ICourseRepo, CourseRepo>();
+            builder.Services.AddScoped<ICourseReservationRepo, CourseReservationRepo>();
             builder.Services.AddScoped<ILanguageRepo, LanguageRepo>();
             builder.Services.AddScoped<IReservationRepo, ReservationRepo>();
             builder.Services.AddScoped<IInstructorRepo, InstructorRepo>();
+            builder.Services.AddScoped<IQuestionsRepo, QuestionsRepo>();
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddScoped<IAccManager, AccManager>();
@@ -67,6 +74,9 @@ namespace final
             builder.Services.AddScoped<IReservationManager, ReservationManager>();
             builder.Services.AddScoped<ICourseReservationManager, CourseReservationManager>();
             builder.Services.AddScoped<ICourseManager, CourseManager>();
+            builder.Services.AddScoped<IQuestionsManager, QuestionsManager>();
+
+
 
 
             #region Identity Manager

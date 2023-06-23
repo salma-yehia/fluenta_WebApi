@@ -1,4 +1,5 @@
 ﻿using italk.BL.Dots;
+using italk.BL.Dtos.LevelDto;
 
 namespace italk.BL.Managers.AccManager
 {
@@ -11,6 +12,6 @@ namespace italk.BL.Managers.AccManager
         Task<InstructorRegisterDto> UpdateInstructor(int id, InstructorRegisterDto instructorDto);
         Task<StudentRegisterDto> GetStudentById(int id);
         Task<InstructorRegisterDto> GetInstructorById(int id);
-
+        Task<LevelDto> UpdateStudentLevel(int id, LevelDto levelDto);
     }
 }

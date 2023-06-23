@@ -36,7 +36,6 @@ namespace italk.APIs.Controllers
         {
             _courseManager.AddCourse(course);
             return Ok();
-
         }
     }
 }

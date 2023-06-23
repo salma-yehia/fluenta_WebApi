@@ -1,6 +1,8 @@
 ﻿using italk.BL.Dots;
+using italk.BL.Dtos.LevelDto;
 using italk.BL.Managers.AccManager;
 using italk.DAL.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +47,7 @@ namespace italk.APIs.Controllers
 
         }
         [HttpPut("UpdateStudent/{id}")]
+        //[Authorize(Policy = "student")]
         public async Task<IActionResult> UpdateStudent(int id, StudentRegisterDto studentDto)
         {
             var updatedStudent = await _accManager.UpdateStudent(id, studentDto);
@@ -58,6 +61,7 @@ namespace italk.APIs.Controllers
         }
 
         [HttpPut("UpdateInstructor/{id}")]
+        //[Authorize(Policy = "instructor")]
         public async Task<IActionResult> UpdateInstructor(int id, InstructorRegisterDto instructorDto)
         {
             var updatedInstructor = await _accManager.UpdateInstructor(id, instructorDto);
@@ -68,6 +72,20 @@ namespace italk.APIs.Controllers
             }
 
             return Ok(updatedInstructor);
+        }
+
+        [HttpPut("UpdateStudentLevel/{id}")]
+        //[Authorize(Policy = "instructor")]
+        public async Task<IActionResult> UpdateStudentLevel(int id, LevelDto levelDto)
+        {
+            var updatedStudentLevel = await _accManager.UpdateStudentLevel(id, levelDto);
+
+            if (updatedStudentLevel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedStudentLevel);
         }
     }
 }

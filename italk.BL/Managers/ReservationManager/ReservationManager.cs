@@ -35,9 +35,15 @@ namespace italk.BL.Managers.ReservationManager
         }
         public int Add(AddReservationDto addReservationDto)
         {
+            if (CheckAppointment(addReservationDto))
+            {
+                return -1; 
+            }
+
             var reservation = _mapper.Map<Reservation>(addReservationDto);
             _unitOfWork.ReservationRepo.Add(reservation);
             _unitOfWork.SaveChanges();
+
             return reservation.StudentId;
         }
     }
