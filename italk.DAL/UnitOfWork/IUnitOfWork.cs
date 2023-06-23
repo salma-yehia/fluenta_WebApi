@@ -1,4 +1,5 @@
-﻿using italk.DAL.Repos.Instructors;
+﻿using italk.DAL.Repos.Question;
+using italk.DAL.Repos.Instructors;
 using italk.DAL.Repos.Languages;
 using italk.DAL.Repos.Reservations;
 
@@ -9,6 +10,8 @@ namespace italk.DAL.UnitOfWork
         ILanguageRepo LanguageRepo { get; }
         IReservationRepo ReservationRepo { get; }
         IInstructorRepo InstructorRepo { get; }
+        IQuestionsRepo QuestionsRepo { get; }
+
         int SaveChanges();
 
     }

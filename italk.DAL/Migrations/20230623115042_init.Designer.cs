@@ -12,8 +12,8 @@ using italk.DAL.Data.Context;
 namespace italk.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230616175611_Init")]
-    partial class Init
+    [Migration("20230623115042_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -253,6 +253,45 @@ namespace italk.DAL.Migrations
                     b.ToTable("Languages");
                 });
 
+            modelBuilder.Entity("italk.DAL.Data.Models.Options", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("Options");
+                });
+
+            modelBuilder.Entity("italk.DAL.Data.Models.Questions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.Reservation", b =>
                 {
                     b.Property<int>("StudentId")
@@ -293,7 +332,7 @@ namespace italk.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Imgname")
+                    b.Property<string>("ImgName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -323,6 +362,11 @@ namespace italk.DAL.Migrations
                     b.Property<string>("Level")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("QuestionId");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
@@ -378,6 +422,17 @@ namespace italk.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("italk.DAL.Data.Models.Options", b =>
+                {
+                    b.HasOne("italk.DAL.Data.Models.Questions", "Exam")
+                        .WithMany("Options")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.Reservation", b =>
                 {
                     b.HasOne("italk.DAL.Data.Models.Instructor", "Instructor")
@@ -408,9 +463,27 @@ namespace italk.DAL.Migrations
                     b.Navigation("Language");
                 });
 
+            modelBuilder.Entity("italk.DAL.Data.Models.Student", b =>
+                {
+                    b.HasOne("italk.DAL.Data.Models.Questions", "Questions")
+                        .WithMany("Students")
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Questions");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.Language", b =>
                 {
                     b.Navigation("instructors");
+                });
+
+            modelBuilder.Entity("italk.DAL.Data.Models.Questions", b =>
+                {
+                    b.Navigation("Options");
+
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("italk.DAL.Data.Models.Instructor", b =>

@@ -1,4 +1,5 @@
 ﻿using italk.BL.Dots;
+using italk.BL.Dtos.LevelDto;
 using italk.BL.Managers.AccManager;
 using italk.DAL.Data.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -71,6 +72,20 @@ namespace italk.APIs.Controllers
             }
 
             return Ok(updatedInstructor);
+        }
+
+        [HttpPut("UpdateStudentLevel/{id}")]
+        //[Authorize(Policy = "instructor")]
+        public async Task<IActionResult> UpdateStudentLevel(int id, LevelDto levelDto)
+        {
+            var updatedStudentLevel = await _accManager.UpdateStudentLevel(id, levelDto);
+
+            if (updatedStudentLevel == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedStudentLevel);
         }
     }
 }

@@ -5,24 +5,24 @@
 namespace italk.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class init2 : Migration
+    public partial class init4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Imgname",
-                table: "AspNetUsers",
-                newName: "ImgName");
+            migrationBuilder.DropColumn(
+                name: "QuestionId",
+                table: "AspNetUsers");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "ImgName",
+            migrationBuilder.AddColumn<int>(
+                name: "QuestionId",
                 table: "AspNetUsers",
-                newName: "Imgname");
+                type: "int",
+                nullable: true);
         }
     }
 }

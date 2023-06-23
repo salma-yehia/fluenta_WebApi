@@ -17,6 +17,8 @@ namespace italk.DAL.Data.Context
         public DbSet<Reservation> Resrvation => Set<Reservation>();
         public DbSet<Instructor> Instructors => Set<Instructor>();
         public DbSet<Student> Students => Set<Student>();
+        public DbSet<Questions> Questions => Set<Questions>();
+        public DbSet<Options> Options => Set<Options>();
         public Context(DbContextOptions<Context> options) : base(options)
         {
 
@@ -38,6 +40,8 @@ namespace italk.DAL.Data.Context
                .HasForeignKey(t => t.InstructorId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Instructor>().HasOne(t => t.Language).WithMany(t => t.instructors)
                .HasForeignKey(t => t.LanguageId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Options>().HasOne(t => t.Questions).WithMany(t => t.Options)
+              .HasForeignKey(t => t.QuestionId).OnDelete(DeleteBehavior.NoAction);
         }
 
     }

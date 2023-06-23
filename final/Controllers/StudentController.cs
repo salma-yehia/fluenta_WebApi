@@ -2,6 +2,7 @@
 using italk.BL.Dtos.ReservationDto;
 using italk.BL.Managers.AccManager;
 using italk.BL.Managers.ReservationManager;
+using italk.DAL.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

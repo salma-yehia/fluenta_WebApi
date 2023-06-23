@@ -4,6 +4,7 @@ using italk.BL.Managers.ReservationManager;
 using italk.BL.Profiles;
 using italk.DAL.Data.Context;
 using italk.DAL.Data.Models;
+using italk.DAL.Repos.Question;
 using italk.DAL.Repos.Instructors;
 using italk.DAL.Repos.Languages;
 using italk.DAL.Repos.Reservations;
@@ -17,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 using System.Security.Claims;
 using System.Text;
+using italk.BL.Managers.QuestionsManager;
 
 namespace final
 {
@@ -59,11 +61,16 @@ namespace final
             builder.Services.AddScoped<ILanguageRepo, LanguageRepo>();
             builder.Services.AddScoped<IReservationRepo, ReservationRepo>();
             builder.Services.AddScoped<IInstructorRepo, InstructorRepo>();
+            builder.Services.AddScoped<IQuestionsRepo, QuestionsRepo>();
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddScoped<IAccManager, AccManager>();
             builder.Services.AddScoped<ILanguageManager, LanguageManager>();
             builder.Services.AddScoped<IReservationManager, ReservationManager>();
+            builder.Services.AddScoped<IQuestionsManager, QuestionsManager>();
+
+
 
 
             #region Identity Manager
