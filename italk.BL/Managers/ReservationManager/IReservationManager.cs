@@ -1,5 +1,4 @@
 ﻿using italk.BL.Dtos.ReservationDto;
-using italk.DAL.Data.Models;
 
 namespace italk.BL.Managers.ReservationManager
 {

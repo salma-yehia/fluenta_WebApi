@@ -15,8 +15,10 @@ namespace italk.DAL.Data.Context
     {
         public DbSet<Language> Languages => Set<Language>();
         public DbSet<Reservation> Resrvation => Set<Reservation>();
+        public DbSet<CourseReservation> CourseResrvation => Set<CourseReservation>();
         public DbSet<Instructor> Instructors => Set<Instructor>();
         public DbSet<Student> Students => Set<Student>();
+        public DbSet<Course> Courses => Set<Course>();
         public Context(DbContextOptions<Context> options) : base(options)
         {
 
@@ -31,6 +33,7 @@ namespace italk.DAL.Data.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Reservation>().HasKey(e => new {e.StudentId , e.InstructorId });
+            modelBuilder.Entity<CourseReservation>().HasKey(e => new {e.StudentId , e.CourseId });
 
             modelBuilder.Entity<Reservation>().HasOne(t => t.Student).WithMany(t => t.Resrvations)
                 .HasForeignKey(t => t.StudentId).OnDelete(DeleteBehavior.NoAction);
@@ -38,6 +41,14 @@ namespace italk.DAL.Data.Context
                .HasForeignKey(t => t.InstructorId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Instructor>().HasOne(t => t.Language).WithMany(t => t.instructors)
                .HasForeignKey(t => t.LanguageId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<CourseReservation>().HasOne(t => t.Course).WithMany(t => t.CrsReservations)
+               .HasForeignKey(t => t.CourseId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<CourseReservation>().HasOne(t => t.Student).WithMany(t => t.CrsReservations)
+              .HasForeignKey(t => t.StudentId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Course>().HasOne(t => t.Instructor).WithMany(t => t.Courses)
+             .HasForeignKey(t => t.InstructorId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Course>().HasOne(t => t.Language).WithMany(t => t.Courses)
+             .HasForeignKey(t => t.LanguageId).OnDelete(DeleteBehavior.NoAction);
         }
 
     }

@@ -4,9 +4,6 @@ using italk.BL.Dtos.UserDto;
 using italk.BL.Managers.AccManager;
 using italk.BL.Managers.LanguageManager;
 using italk.BL.Managers.ReservationManager;
-using italk.DAL.Data.Models;
-using italk.DAL.Repos.Instructors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 

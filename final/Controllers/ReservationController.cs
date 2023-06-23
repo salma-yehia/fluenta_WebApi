@@ -1,7 +1,5 @@
 ﻿using italk.BL.Dtos.ReservationDto;
-using italk.BL.Managers.LanguageManager;
 using italk.BL.Managers.ReservationManager;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace italk.APIs.Controllers

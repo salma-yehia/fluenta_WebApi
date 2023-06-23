@@ -2,11 +2,6 @@
 using italk.DAL.Repos.Instructors;
 using italk.DAL.Repos.Languages;
 using italk.DAL.Repos.Reservations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace italk.DAL.UnitOfWork
 {
@@ -14,18 +9,22 @@ namespace italk.DAL.UnitOfWork
     {
         public ILanguageRepo LanguageRepo { get; }
         public IReservationRepo ReservationRepo { get; }
+        public ICourseReservationRepo CourseReservationRepo { get; }
         public IInstructorRepo InstructorRepo { get; }
+        public ICourseRepo CourseRepo { get; set; }  
 
 
         private readonly Context _context;
 
         public UnitOfWork(ILanguageRepo languageRepoFromIoC,
-            IReservationRepo reservationRepoFromIoC, IInstructorRepo instructorRepoFromIoC,
+            IReservationRepo reservationRepoFromIoC, IInstructorRepo instructorRepoFromIoC,ICourseRepo courseRepoFromIoC,ICourseReservationRepo courseReservationRepoFromIoC,
             Context context)
         {
             LanguageRepo = languageRepoFromIoC;
             ReservationRepo = reservationRepoFromIoC;
+            CourseReservationRepo = courseReservationRepoFromIoC;
             InstructorRepo = instructorRepoFromIoC;
+            CourseRepo= courseRepoFromIoC;
             _context = context;
         }
         public int SaveChanges()

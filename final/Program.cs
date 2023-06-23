@@ -1,3 +1,4 @@
+using italk.BL;
 using italk.BL.Managers.AccManager;
 using italk.BL.Managers.LanguageManager;
 using italk.BL.Managers.ReservationManager;
@@ -64,6 +65,8 @@ namespace final
             builder.Services.AddScoped<IAccManager, AccManager>();
             builder.Services.AddScoped<ILanguageManager, LanguageManager>();
             builder.Services.AddScoped<IReservationManager, ReservationManager>();
+            builder.Services.AddScoped<ICourseReservationManager, CourseReservationManager>();
+            builder.Services.AddScoped<ICourseManager, CourseManager>();
 
 
             #region Identity Manager

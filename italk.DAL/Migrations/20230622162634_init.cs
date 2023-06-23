@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace italk.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,7 +73,7 @@ namespace italk.DAL.Migrations
                     Appointment = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descroption = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Imgname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImgName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Experience = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TeachingCertificate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExtraCourses = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -190,6 +190,39 @@ namespace italk.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Course",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    picture = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NumOfPlaces = table.Column<int>(type: "int", nullable: false),
+                    PLacesLeft = table.Column<int>(type: "int", nullable: false),
+                    Appointment = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CrsCategory = table.Column<int>(type: "int", nullable: false),
+                    CrsLevel = table.Column<int>(type: "int", nullable: false),
+                    InstructorId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Course", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Course_AspNetUsers_InstructorId",
+                        column: x => x.InstructorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Course_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Resrvation",
                 columns: table => new
                 {
@@ -209,6 +242,29 @@ namespace italk.DAL.Migrations
                         name: "FK_Resrvation_AspNetUsers_StudentId",
                         column: x => x.StudentId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CourseReservation",
+                columns: table => new
+                {
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    Appointment = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseReservation", x => new { x.StudentId, x.CourseId });
+                    table.ForeignKey(
+                        name: "FK_CourseReservation_AspNetUsers_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_CourseReservation_Course_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Course",
                         principalColumn: "Id");
                 });
 
@@ -257,6 +313,21 @@ namespace italk.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Course_InstructorId",
+                table: "Course",
+                column: "InstructorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Course_LanguageId",
+                table: "Course",
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseReservation_CourseId",
+                table: "CourseReservation",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Resrvation_InstructorId",
                 table: "Resrvation",
                 column: "InstructorId");
@@ -281,10 +352,16 @@ namespace italk.DAL.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CourseReservation");
+
+            migrationBuilder.DropTable(
                 name: "Resrvation");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Course");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

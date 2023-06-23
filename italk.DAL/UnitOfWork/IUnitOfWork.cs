@@ -8,7 +8,9 @@ namespace italk.DAL.UnitOfWork
     {
         ILanguageRepo LanguageRepo { get; }
         IReservationRepo ReservationRepo { get; }
+        ICourseReservationRepo CourseReservationRepo { get; }
         IInstructorRepo InstructorRepo { get; }
+        ICourseRepo CourseRepo { get; }
         int SaveChanges();
 
     }

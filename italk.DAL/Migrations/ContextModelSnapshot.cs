@@ -155,6 +155,77 @@ namespace italk.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("italk.DAL.Course", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Appointment")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CrsCategory")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CrsLevel")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumOfPlaces")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PLacesLeft")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("picture")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstructorId");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("italk.DAL.CourseReservation", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Appointment")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("StudentId", "CourseId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("CourseResrvation");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.BaseModel", b =>
                 {
                     b.Property<int>("Id")
@@ -375,6 +446,44 @@ namespace italk.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("italk.DAL.Course", b =>
+                {
+                    b.HasOne("italk.DAL.Data.Models.Instructor", "Instructor")
+                        .WithMany("Courses")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("italk.DAL.Data.Models.Language", "Language")
+                        .WithMany("Courses")
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("italk.DAL.CourseReservation", b =>
+                {
+                    b.HasOne("italk.DAL.Course", "Course")
+                        .WithMany("CrsReservations")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("italk.DAL.Data.Models.Student", "Student")
+                        .WithMany("CrsReservations")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.Reservation", b =>
                 {
                     b.HasOne("italk.DAL.Data.Models.Instructor", "Instructor")
@@ -405,18 +514,29 @@ namespace italk.DAL.Migrations
                     b.Navigation("Language");
                 });
 
+            modelBuilder.Entity("italk.DAL.Course", b =>
+                {
+                    b.Navigation("CrsReservations");
+                });
+
             modelBuilder.Entity("italk.DAL.Data.Models.Language", b =>
                 {
+                    b.Navigation("Courses");
+
                     b.Navigation("instructors");
                 });
 
             modelBuilder.Entity("italk.DAL.Data.Models.Instructor", b =>
                 {
+                    b.Navigation("Courses");
+
                     b.Navigation("Resrvations");
                 });
 
             modelBuilder.Entity("italk.DAL.Data.Models.Student", b =>
                 {
+                    b.Navigation("CrsReservations");
+
                     b.Navigation("Resrvations");
                 });
 #pragma warning restore 612, 618

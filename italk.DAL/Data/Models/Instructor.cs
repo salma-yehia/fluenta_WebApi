@@ -19,6 +19,7 @@ namespace italk.DAL.Data.Models
         public string TeachingCertificate { get; set; } = string.Empty;
         public string ExtraCourses { get; set; } = string.Empty;
         public ICollection<Reservation> Resrvations { get; set; } = new List<Reservation>();
+        public ICollection<Course> Courses { get; set; }=new HashSet<Course>();
         public Language Language { get; set; } = null!;
     }
 }

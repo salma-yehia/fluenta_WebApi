@@ -1,11 +1,6 @@
 ﻿using italk.DAL.Data.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using italk.DAL.Data.Models;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace italk.DAL.Repos.Instructors
 {

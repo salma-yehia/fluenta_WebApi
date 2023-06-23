@@ -1,18 +1,8 @@
 ﻿using AutoMapper;
-using italk.BL.Dots;
 using italk.BL.Dtos.ReservationDto;
-using italk.BL.Dtos.UserDto;
 using italk.DAL.Data.Models;
-using italk.DAL.Repos.Languages;
-using italk.DAL.Repos.Reservations;
 using italk.DAL.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using static italk.BL.Dots.InstructorRegisterDto;
+
 
 namespace italk.BL.Managers.ReservationManager
 {

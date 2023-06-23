@@ -1,10 +1,4 @@
-﻿using italk.BL.Dots;
-using italk.BL.Dtos.UserDto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using italk.BL.Dtos.UserDto;
 
 namespace italk.BL.Dtos.ReservationDto
 {
