@@ -28,7 +28,6 @@ public class CourseRepo : ICourseRepo
 
     public void AddCourse(Course course)
     {
-        course.Id = _context.Courses.Count() + 1;
         _context.Courses.Add(course);
     }
 

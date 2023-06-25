@@ -31,7 +31,7 @@ namespace italk.APIs.Controllers
             return _courseManager.GetCourseByLevel(level);
         }
 
-        [HttpPost]
+        [HttpPost("AddCourse")]
         public ActionResult AddCourse(CourseAddDto course)
         {
             _courseManager.AddCourse(course);

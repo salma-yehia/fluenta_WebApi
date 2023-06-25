@@ -39,6 +39,7 @@ public class CourseManager : ICourseManager
     {
         var CourseList = _mapper.Map<Course>(courseAddDto);
         _unitOfWork.CourseRepo.AddCourse(CourseList);
+        _unitOfWork.SaveChanges();
         
     }
 

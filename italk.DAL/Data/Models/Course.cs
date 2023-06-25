@@ -17,7 +17,7 @@ public class Course
     public int InstructorId { get; set; }
     public int LanguageId { get; set; }
     public Language Language { get; set; } = null!;
-    public Instructor Instructor { get; set; }=new Instructor();
+    public Instructor Instructor { get; set; } = null!;
     public ICollection<CourseReservation> CrsReservations { get; set; }=new List<CourseReservation>();
 
 

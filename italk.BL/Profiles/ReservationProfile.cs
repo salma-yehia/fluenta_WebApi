@@ -13,7 +13,7 @@ namespace italk.BL.Profiles
             CreateMap<Reservation, ReservationDto>();
             CreateMap<Instructor, InstructorDto>();
             CreateMap<Student, StudentDto>();
-            CreateMap<AddCourseReservationDto, Reservation>();
+            CreateMap<AddReservationDto, Reservation>();
         }
     }
 }
