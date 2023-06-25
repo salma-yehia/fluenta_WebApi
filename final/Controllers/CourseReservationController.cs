@@ -1,4 +1,5 @@
 ﻿using italk.BL;
+using italk.BL.Dtos.CourseReservationDto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace italk.APIs;

@@ -24,4 +24,8 @@
     <ProjectReference Include="..\italk.BL\italk.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Files\Courses\" />
+  </ItemGroup>
+
 </Project>

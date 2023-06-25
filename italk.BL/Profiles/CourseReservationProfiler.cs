@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using italk.BL.Dtos.CourseReservationDto;
 using italk.BL.Dtos.UserDto;
 using italk.DAL;
 using italk.DAL.Data.Models;

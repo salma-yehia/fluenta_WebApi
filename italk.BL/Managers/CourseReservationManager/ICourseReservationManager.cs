@@ -1,4 +1,5 @@
-﻿using italk.BL.Dtos.ReservationDto;
+﻿using italk.BL.Dtos.CourseReservationDto;
+using italk.BL.Dtos.ReservationDto;
 
 namespace italk.BL;
 public interface ICourseReservationManager

@@ -2,7 +2,7 @@
 using italk.DAL;
 using italk.BL.Dtos.UserDto;
 
-namespace italk.BL;
+namespace italk.BL.Dtos.CourseReservationDto;
 
 public class CourseReservationDto
 {

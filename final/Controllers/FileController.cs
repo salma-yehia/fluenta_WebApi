@@ -13,6 +13,12 @@ namespace italk.APIs.Controllers
         {
             return ProcessUploadedFile(file, "Images");
         }
+
+        [HttpPost("UploadCourseImage")]
+        public ActionResult<UploadFileDto> UploadCourseImage(IFormFile file)
+        {
+            return ProcessUploadedFile(file, "Courses");
+        }
         [HttpPost("UploadCertificate")]
         public ActionResult<UploadFileDto> UploadCertificate(IFormFile file)
         {
